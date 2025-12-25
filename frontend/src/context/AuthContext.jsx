@@ -45,7 +45,13 @@ export const AuthProvider = ({ children }) => {
             console.error('Register error:', error);
             return {
                 success: false,
-                message: error.response?.data?.detail || 'Registration failed'
+                message: error.response?.data?.detail || 'Registration failed',
+                debugInfo: {
+                    url: error.config?.url,
+                    baseUrl: error.config?.baseURL,
+                    status: error.response?.status,
+                    data: error.response?.data
+                }
             };
         }
     };

@@ -22,7 +22,13 @@ const Register = () => {
         if (res.success) {
             navigate('/login');
         } else {
-            setError(res.message);
+            // Check if it's a validation error (often an array from FastAPI)
+            let msg = res.message;
+            if (Array.isArray(msg)) {
+                msg = msg.map(err => `${err.loc.join('.')}: ${err.msg}`).join(', ');
+            }
+            setError(msg);
+            console.error('Registration failed:', res.debugInfo || res.message);
         }
     };
 
