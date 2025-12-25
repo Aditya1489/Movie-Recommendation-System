@@ -433,7 +433,7 @@ const AdminDashboard = () => {
                                                 <button
                                                     onClick={() => handleDeleteMovie(movie.id)}
                                                     className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition"
-                                                    title="Delete Movie Permanently"
+                                                    title="Delete Movie"
                                                 >
                                                     <FaTrash />
                                                 </button>

@@ -3,6 +3,7 @@
 Thumbs.db
 
 # Backend
+backend/movie_app.db
 backend/__pycache__/
 backend/*.pyc
 backend/*.pyo
