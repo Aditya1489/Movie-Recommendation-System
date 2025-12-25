@@ -5,7 +5,7 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
-# Ensure only one deployment at a time
+# Ensure only one deployment at a time and cancel older runs
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -14,14 +14,24 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: write # Needed to delete old artifacts
 
 jobs:
-  # Single job to prevent artifact duplication errors
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Cleanup Duplicate Artifacts
+        continue-on-error: true
+        run: |
+          echo "Checking for existing 'github-pages' artifacts in this run..."
+          gh api repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts \
+            --jq '.artifacts[] | select(.name=="github-pages") | .id' \
+            | xargs -I {} gh api repos/${{ github.repository }}/actions/artifacts/{} -X DELETE
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
