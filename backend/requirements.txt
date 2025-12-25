@@ -64,3 +64,7 @@ urllib3
 uvicorn
 watchfiles
 websockets
+
+gunicorn
+uvicorn
+
