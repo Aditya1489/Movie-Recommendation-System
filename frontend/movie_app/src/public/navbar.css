@@ -1,0 +1,50 @@
+/* NavigationBar.css */
+
+
+  .nav-item.active {
+    color: #007bff; /* Active link color */
+  }
+  
+  .nav-item:hover {
+    color: #007bff; /* Hovered link color */
+  }
+  .nav-item:hover {
+    color: #007bff; /* Hovered link color */
+    transform: translateY(-3px); /* Add a slight upward shift on hover */
+  }
+  
+  /* NavigationBar.css */
+
+.navbar {
+    padding: 10px 0;
+    
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+
+  
+  .user-section {
+    gap: 20px; /* Adjust as needed */
+  }
+  
+
+  /* NavigationBar.css */
+
+.nav-item {
+    padding: 10px 20px;
+    transition: color 0.3s, border-bottom 0.3s; 
+    color: #000000; /* White text color */
+    position: relative; /* Add a relative position to the nav item */
+  }
+  
+  .nav-item.active {
+    color: #007bff; /* Active link color */
+    border-bottom: 2px solid #007bff; /* Add a bottom border for the active item */
+  }
+  
